@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="167*"/>
+        </Grid.ColumnDefinitions>
+        <Label 
+            DataContext="{Binding Counter}"
+            Content="{Binding Value}" 
+            HorizontalAlignment="Left" 
+            Margin="45,41,0,0" 
+            VerticalAlignment="Top" Height="10" Width="10"
+        />
+        <Button Content="Button" HorizontalAlignment="Left" 
+                Margin="195,52,0,0" VerticalAlignment="Top" Width="75" 
+                Click="Button_Click" Height="20"
+        />
+        <ListView 
+            HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" 
+            VerticalAlignment="Top" Width="481" Grid.Column="1"
+            ItemsSource="{Binding Users}"
+            >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">
+                        <GridViewColumn.Header>Имя</GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Age}">
+                        <GridViewColumn.Header>Возраст</GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
