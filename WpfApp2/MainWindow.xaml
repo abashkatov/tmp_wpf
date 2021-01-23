@@ -19,13 +19,14 @@
             VerticalAlignment="Top" Height="10" Width="10"
         />
         <Button Content="Button" HorizontalAlignment="Left" 
-                Margin="195,52,0,0" VerticalAlignment="Top" Width="75" 
-                Click="Button_Click" Height="20"
+                Margin="195,52,0,0" VerticalAlignment="Top" Width="75" Height="20"
+                Command="{Binding OpenDialogCommand}"
         />
         <ListView 
             HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" 
             VerticalAlignment="Top" Width="481" Grid.Column="1"
-            ItemsSource="{Binding Users}"
+            ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedUser}"
             >
             <ListView.View>
                 <GridView>
@@ -38,6 +39,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="195,107,0,0" VerticalAlignment="Top" Width="75"
+                Command="{Binding GetItemCommand}"
+                CommandParameter="{Binding SelectedUser}" Click="Button_Click"
+                />
 
     </Grid>
 </Window>

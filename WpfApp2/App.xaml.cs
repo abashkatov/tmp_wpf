@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfApp2.Command;
 using WpfApp2.Entity;
 using WpfApp2.ViewModel;
 
@@ -21,8 +22,12 @@ namespace WpfApp2
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<MainWindowViewModel, MainWindowViewModel>();
             services.AddSingleton<Counter>();
+            services.AddSingleton<OpenDialogCommand>();
+            services.AddSingleton<GetItemCommand>();
+            services.AddSingleton<UserWindow>();
+            services.AddSingleton<UserWindowViewModel>();
 
             ObservableCollection<User> users = new ObservableCollection<User>();
             users.Add(new User("Ivan", 20));
