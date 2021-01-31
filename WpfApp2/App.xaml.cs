@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WpfApp2.Command;
 using WpfApp2.Entity;
+using WpfApp2.Service;
 using WpfApp2.ViewModel;
 
 namespace WpfApp2
@@ -28,7 +29,9 @@ namespace WpfApp2
             services.AddSingleton<GetItemCommand>();
             services.AddSingleton<UserWindow>();
             services.AddSingleton<UserWindowViewModel>();
-
+            services.AddSingleton<UserUpdateService>();
+            services.AddSingleton<AuthCommand>();
+            
             ObservableCollection<User> users = new ObservableCollection<User>();
             users.Add(new User("Ivan", 20));
             services.AddSingleton(typeof(ObservableCollection<User>), users);

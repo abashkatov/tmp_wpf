@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WpfApp2.Entity;
+using WpfApp2.Service;
 
 namespace WpfApp2.Command
 {
@@ -13,11 +14,17 @@ namespace WpfApp2.Command
     {
         private readonly Counter counter;
         private readonly ObservableCollection<User> users;
+        private readonly UserUpdateService userUpdateService;
 
-        public OpenDialogCommand(Counter counter, ObservableCollection<User> users)
+        public OpenDialogCommand(
+            Counter counter, 
+            ObservableCollection<User> users,
+            UserUpdateService userUpdateService
+            )
         {
             this.counter = counter;
             this.users = users;
+            this.userUpdateService = userUpdateService;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -31,9 +38,8 @@ namespace WpfApp2.Command
         {
             counter.Value++;
             uint num = (uint)users.Count;
-            users.Add(new User("Ivan" + num, 20 + num));
-            users[0].Name = users[0].Name + num;
-            users[0].Age = users[0].Age + num;
+            users.Add(userUpdateService.CreateUser(num));
+            userUpdateService.UpdateUser(users[0], num);
         }
     }
 }

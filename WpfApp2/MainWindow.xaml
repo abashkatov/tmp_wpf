@@ -18,7 +18,7 @@
             Margin="45,41,0,0" 
             VerticalAlignment="Top" Height="10" Width="10"
         />
-        <Button Content="Button" HorizontalAlignment="Left" 
+        <Button Content="Open dialog" HorizontalAlignment="Left" 
                 Margin="195,52,0,0" VerticalAlignment="Top" Width="75" Height="20"
                 Command="{Binding OpenDialogCommand}"
         />
@@ -41,8 +41,13 @@
         </ListView>
         <Button Content="Button" HorizontalAlignment="Left" Margin="195,107,0,0" VerticalAlignment="Top" Width="75"
                 Command="{Binding GetItemCommand}"
-                CommandParameter="{Binding SelectedUser}" Click="Button_Click"
+                CommandParameter="{Binding SelectedUser}"
                 />
+        <Button Content="Auth" HorizontalAlignment="Left" Margin="195,159,0,0" VerticalAlignment="Top" Width="75"
+                Command="{Binding AuthCommand}"
+                CommandParameter="{Binding ElementName=password}"
+                />
+        <PasswordBox Name="password" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="117"/>
 
     </Grid>
 </Window>

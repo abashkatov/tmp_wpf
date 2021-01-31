@@ -11,8 +11,10 @@ namespace WpfApp2.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public OpenDialogCommand OpenDialogCommand { get; }
         public GetItemCommand GetItemCommand { get; }
-        private User selectedUser;
+        public AuthCommand AuthCommand { get; }
 
+        private User selectedUser;
+        public string Password { get; set; }
         public User SelectedUser
         {
             get => selectedUser;
@@ -30,14 +32,15 @@ namespace WpfApp2.ViewModel
             ObservableCollection<User> users, 
             OpenDialogCommand openDialogCommand,
             GetItemCommand getItemCommand,
-            UserWindowViewModel userWindowViewModel
+            UserWindowViewModel userWindowViewModel,
+            AuthCommand authCommand
             )
         {
             Counter = counter;
             Users = users;
             OpenDialogCommand = openDialogCommand;
             GetItemCommand = getItemCommand;
-            
+            AuthCommand = authCommand;
             userWindowViewModel.Subscribe(this);
         }
     }
